@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Happy Paws | Pet Details</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f8f7f2;
+    color: #333;
+}
+
+/* NAVIGATION */
+
+nav {
+    background: white;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 12px #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: #27675d;
+}
+
+.logo span {
+    color: #df8050;
+}
+
+nav a {
+    text-decoration: none;
+    color: #444;
+    margin-left: 22px;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: #27675d;
+}
+
+
+/* PAGE HEADER */
+
+.header {
+    text-align: center;
+    padding: 45px 20px 30px;
+    background: linear-gradient(120deg, #e7f2ee, #fff7ed);
+}
+
+.small-title {
+    color: #df8050;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.header h1 {
+    font-size: 42px;
+    color: #244f49;
+    margin: 12px;
+}
+
+.header p {
+    color: #666;
+}
+
+
+/* DETAILS BOX */
+
+.details-section {
+    padding: 50px 8%;
+}
+
+.details-box {
+    max-width: 950px;
+    margin: auto;
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px #ddd;
+    display: flex;
+}
+
+
+/* PET IMAGE */
+
+.pet-image {
+    width: 50%;
+    min-height: 430px;
+}
+
+.pet-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* PET INFORMATION */
+
+.pet-info {
+    width: 50%;
+    padding: 45px;
+}
+
+.pet-info h2 {
+    font-size: 38px;
+    color: #244f49;
+    margin: 0 0 8px;
+}
+
+.breed {
+    color: #df8050;
+    font-size: 19px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.description {
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+
+/* INFORMATION TABLE */
+
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+}
+
+.info-table td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.info-table td:first-child {
+    font-weight: bold;
+    color: #27675d;
+    width: 40%;
+}
+
+
+/* BUTTONS */
+
+.adopt {
+    display: inline-block;
+    background: #27675d;
+    color: white;
+    text-decoration: none;
+    padding: 13px 25px;
+    border-radius: 7px;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.adopt:hover {
+    background: #174d45;
+}
+
+.back {
+    display: inline-block;
+    background: #eee;
+    color: #444;
+    text-decoration: none;
+    padding: 13px 22px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.back:hover {
+    background: #ddd;
+}
+
+
+/* NOT FOUND */
+
+#notFound {
+    display: none;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+#notFound h2 {
+    color: #244f49;
+}
+
+
+/* FOOTER */
+
+footer {
+    background: #1d3834;
+    color: white;
+    padding: 35px 8%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+footer h3 {
+    color: #a9d8cf;
+}
+
+footer p {
+    color: #ddd;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 18px;
+    border-top: 1px solid #45615c;
+    color: #bbb;
+}
+
+
+/* MOBILE */
+
+@media(max-width: 800px) {
+
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 5px;
+    }
+
+    .details-box {
+        flex-direction: column;
+    }
+
+    .pet-image,
+    .pet-info {
+        width: 100%;
+    }
+
+    .pet-image {
+        height: 350px;
+        min-height: auto;
+    }
+
+    .pet-info {
+        padding: 30px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<div class="logo">
+Happy <span>Paws</span>
+</div>
+
+<div>
+
+<a href="index.html">Home</a>
+
+<a href="pets.html">Available Pets</a>
+
+<a href="details.html">Pet Details</a>
+
+<a href="adoption.html">Adoption</a>
+
+<a href="summary.php">Summary</a>
+
+<a href="payment.html">Payment</a>
+
+</div>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<section class="header">
+
+<div class="small-title">
+GET TO KNOW YOUR COMPANION
+</div>
+
+<h1>Pet Details</h1>
+
+<p>
+Learn more about your future companion.
+</p>
+
+</section>
+
+
+<!-- PET DETAILS -->
+
+<section class="details-section">
+
+<div class="details-box" id="detailsBox">
+
+<!-- PHOTO -->
+
+<div class="pet-image">
+
+<img id="petImage" src="" alt="Pet">
+
+</div>
+
+
+<!-- INFORMATION -->
+
+<div class="pet-info">
+
+<h2 id="petName"></h2>
+
+<div class="breed" id="petBreed"></div>
+
+<p class="description" id="petDescription"></p>
+
+
+<table class="info-table">
+
+<tr>
+
+<td>Age</td>
+
+<td id="petAge"></td>
+
+</tr>
+
+<tr>
+
+<td>Gender</td>
+
+<td id="petGender"></td>
+
+</tr>
+
+<tr>
+
+<td>Category</td>
+
+<td id="petCategory"></td>
+
+</tr>
+
+<tr>
+
+<td>Health</td>
+
+<td>Healthy & Vaccinated</td>
+
+</tr>
+
+</table>
+
+
+<a class="adopt" id="adoptButton" href="#">
+Adopt Now
+</a>
+
+<a class="back" href="pets.html">
+Back to Pets
+</a>
+
+</div>
+
+</div>
+
+
+<!-- PET NOT FOUND -->
+
+<div id="notFound">
+
+<h2>Pet Not Found</h2>
+
+<p>
+Please return to the Available Pets page and select a pet.
+</p>
+
+<a class="adopt" href="pets.html">
+View Available Pets
+</a>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-content">
+
+<div>
+
+<h3>Happy Paws</h3>
+
+<p>
+Helping pets find loving forever homes.
+</p>
+
+</div>
+
+
+<div>
+
+<h3>Contact</h3>
+
+<p>happypaws@gmail.com</p>
+
+<p>+91 98765 43210</p>
+
+</div>
+
+
+<div>
+
+<h3>Quick Links</h3>
+
+<p>Available Pets</p>
+
+<p>Adoption Application</p>
+
+</div>
+
+</div>
+
+
+<div class="copyright">
+
+© 2026 Happy Paws Pet Adoption. All Rights Reserved.
+
+</div>
+
+</footer>
+
+
+<script>
+
+/* PET DATA */
+
+var pets = [
+
+{
+name: "Bruno",
+breed: "Labrador",
+category: "Dog",
+age: "2 Years",
+gender: "Male",
+image: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=800",
+description: "Bruno is a friendly and energetic Labrador who loves people, playing outdoors and spending time with his family."
+},
+
+{
+name: "Max",
+breed: "Beagle",
+category: "Dog",
+age: "3 Years",
+gender: "Male",
+image: "https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=800",
+description: "Max is a cheerful Beagle with a playful personality. He would make a wonderful companion for an active family."
+},
+
+{
+name: "Rocky",
+breed: "Golden Retriever",
+category: "Dog",
+age: "2 Years",
+gender: "Male",
+image: "https://images.unsplash.com/photo-1558788353-f76d92427f16?w=800",
+description: "Rocky is a gentle Golden Retriever who enjoys attention, walks and playing with people."
+},
+
+{
+name: "Simba",
+breed: "Indian Pariah",
+category: "Dog",
+age: "1 Year",
+gender: "Male",
+image: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800",
+description: "Simba is a smart and affectionate Indian Pariah looking for a caring family and a permanent home."
+},
+
+{
+name: "Milo",
+breed: "Indie Mix",
+category: "Dog",
+age: "2 Years",
+gender: "Male",
+image: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=800",
+description: "Milo is a loving Indie Mix with a calm nature and a friendly personality."
+},
+
+{
+name: "Daisy",
+breed: "Cocker Spaniel",
+category: "Dog",
+age: "3 Years",
+gender: "Female",
+image: "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800",
+description: "Daisy is a sweet and affectionate Cocker Spaniel who loves attention and gentle walks."
+},
+
+{
+name: "Oscar",
+breed: "German Shepherd",
+category: "Dog",
+age: "4 Years",
+gender: "Male",
+image: "https://images.unsplash.com/photo-1568572933382-74d440642117?w=800",
+description: "Oscar is a loyal German Shepherd with a confident but friendly personality."
+},
+
+{
+name: "Ruby",
+breed: "Pug",
+category: "Dog",
+age: "2 Years",
+gender: "Female",
+image: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=800",
+description: "Ruby is a cheerful Pug who loves relaxing with people and receiving plenty of affection."
+},
+
+{
+name: "Luna",
+breed: "Persian Cat",
+category: "Cat",
+age: "1 Year",
+gender: "Female",
+image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=800",
+description: "Luna is a beautiful Persian cat with a gentle nature. She enjoys quiet surroundings and human companionship."
+},
+
+{
+name: "Bella",
+breed: "Siamese Cat",
+category: "Cat",
+age: "2 Years",
+gender: "Female",
+image: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=800",
+description: "Bella is an affectionate Siamese cat who enjoys playing and spending time with her family."
+},
+
+{
+name: "Coco",
+breed: "Indian Shorthair",
+category: "Cat",
+age: "1 Year",
+gender: "Female",
+image: "https://images.unsplash.com/photo-1574158622682-e40e69881006?w=800",
+description: "Coco is a playful and friendly Indian Shorthair who would love a warm and caring home."
+},
+
+{
+name: "Mimi",
+breed: "Himalayan Cat",
+category: "Cat",
+age: "3 Years",
+gender: "Female",
+image: "https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?w=800",
+description: "Mimi is a calm Himalayan cat who enjoys peaceful surroundings and gentle attention."
+},
+
+{
+name: "Leo",
+breed: "Maine Coon",
+category: "Cat",
+age: "2 Years",
+gender: "Male",
+image: "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=800",
+description: "Leo is a confident and friendly Maine Coon who loves exploring and interacting with people."
+},
+
+{
+name: "Misty",
+breed: "Tabby Cat",
+category: "Cat",
+age: "1 Year",
+gender: "Female",
+image: "https://images.unsplash.com/photo-1529778873920-4da4926a72c2?w=800",
+description: "Misty is a gentle Tabby cat who enjoys playing and relaxing in a loving home."
+},
+
+{
+name: "Snowy",
+breed: "Rabbit",
+category: "Other Pet",
+age: "1 Year",
+gender: "Female",
+image: "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=800",
+description: "Snowy is a gentle rabbit who enjoys a peaceful environment and careful attention."
+},
+
+{
+name: "Rio",
+breed: "Parrot",
+category: "Other Pet",
+age: "2 Years",
+gender: "Male",
+image: "https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=800",
+description: "Rio is a colourful and lively parrot who enjoys interaction and a caring environment."
+},
+
+{
+name: "Shelly",
+breed: "Tortoise",
+category: "Other Pet",
+age: "4 Years",
+gender: "Not specified",
+image: "https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=800",
+description: "Shelly is a peaceful tortoise looking for a safe, comfortable and responsible home."
+},
+
+{
+name: "Kiwi",
+breed: "Lovebird",
+category: "Other Pet",
+age: "1 Year",
+gender: "Female",
+image: "https://images.unsplash.com/photo-1544923408-75c5cef46f14?w=800",
+description: "Kiwi is a lively Lovebird who enjoys company and a warm, caring environment."
+}
+
+];
+
+
+/* GET PET NAME FROM PAGE 2 */
+
+var selectedPet =
+new URLSearchParams(window.location.search).get("pet");
+
+
+/* FIND SELECTED PET */
+
+var foundPet = null;
+
+for (var i = 0; i < pets.length; i++) {
+
+    if (
+        pets[i].name.toLowerCase()
+        ==
+        selectedPet?.toLowerCase()
+    ) {
+
+        foundPet = pets[i];
+
+        break;
+
+    }
+
+}
+
+
+/* DISPLAY PET */
+
+if (foundPet) {
+
+    document.getElementById("petName").innerHTML =
+    foundPet.name;
+
+    document.getElementById("petBreed").innerHTML =
+    foundPet.breed;
+
+    document.getElementById("petImage").src =
+    foundPet.image;
+
+    document.getElementById("petDescription").innerHTML =
+    foundPet.description;
+
+    document.getElementById("petAge").innerHTML =
+    foundPet.age;
+
+    document.getElementById("petGender").innerHTML =
+    foundPet.gender;
+
+    document.getElementById("petCategory").innerHTML =
+    foundPet.category;
+
+
+    /* ADOPT BUTTON */
+
+    document.getElementById("adoptButton").href =
+    "adoption.html?pet=" +
+    encodeURIComponent(foundPet.name);
+
+}
+
+
+/* PET NOT FOUND */
+
+else {
+
+    document.getElementById("detailsBox").style.display =
+    "none";
+
+    document.getElementById("notFound").style.display =
+    "block";
+
+}
+
+</script>
+
+
+</body>
+
+</html>
