@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<title>Happy Paws | Available Pets</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f8f7f2;
+    color: #333;
+}
+
+/* NAVIGATION */
+
+nav {
+    background: white;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 12px #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: #27675d;
+}
+
+.logo span {
+    color: #df8050;
+}
+
+nav a {
+    text-decoration: none;
+    color: #444;
+    margin-left: 22px;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: #27675d;
+}
+
+/* HEADER */
+
+.header {
+    text-align: center;
+    padding: 55px 20px 40px;
+    background: linear-gradient(120deg, #e7f2ee, #fff7ed);
+}
+
+.small-title {
+    color: #df8050;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.header h1 {
+    font-size: 45px;
+    color: #244f49;
+    margin: 12px;
+}
+
+.header p {
+    color: #666;
+    font-size: 17px;
+}
+
+/* FILTER AREA */
+
+.filter-area {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 2px 8px #ddd;
+}
+
+.category button {
+    padding: 11px 23px;
+    margin: 5px;
+    border: 1px solid #27675d;
+    background: white;
+    color: #27675d;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.category button:hover {
+    background: #27675d;
+    color: white;
+}
+
+.search {
+    margin-top: 18px;
+}
+
+.search input {
+    width: 360px;
+    max-width: 90%;
+    padding: 13px 18px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    font-size: 15px;
+}
+
+/* COUNT */
+
+.count {
+    text-align: center;
+    color: #666;
+    margin: 25px 0 10px;
+}
+
+.count span {
+    color: #27675d;
+    font-weight: bold;
+}
+
+/* PET AREA */
+
+.pet-area {
+    padding: 10px 7% 60px;
+    min-height: 350px;
+}
+
+#message {
+    text-align: center;
+    color: #777;
+    margin: 65px 0;
+    font-size: 18px;
+}
+
+/* PET GRID */
+
+.pets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+/* PET CARD */
+
+.pet-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px #ddd;
+    transition: 0.3s;
+}
+
+.pet-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px #ccc;
+}
+
+/* PET PHOTO */
+
+.pet-image {
+    height: 190px;
+    overflow: hidden;
+    background: #e7f2ee;
+}
+
+.pet-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.4s;
+}
+
+.pet-card:hover .pet-image img {
+    transform: scale(1.06);
+}
+
+/* PET INFORMATION */
+
+.pet-info {
+    padding: 18px;
+}
+
+.pet-info h2 {
+    margin: 0 0 5px;
+    color: #244f49;
+    font-size: 22px;
+}
+
+.breed {
+    color: #df8050;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.info {
+    color: #666;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.details {
+    display: block;
+    text-align: center;
+    margin-top: 14px;
+    padding: 10px;
+    background: #27675d;
+    color: white;
+    text-decoration: none;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.details:hover {
+    background: #174d45;
+}
+
+/* FOOTER */
+
+footer {
+    background: #1d3834;
+    color: white;
+    padding: 35px 8%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+footer h3 {
+    color: #a9d8cf;
+}
+
+footer p {
+    color: #ddd;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 18px;
+    border-top: 1px solid #45615c;
+    color: #bbb;
+}
+
+/* MOBILE */
+
+@media(max-width: 800px) {
+
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 5px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<div class="logo">
+Happy <span>Paws</span>
+</div>
+
+<div>
+
+<a href="index.html">Home</a>
+<a href="pets.html">Available Pets</a>
+<a href="details.html">Pet Details</a>
+<a href="adoption.html">Adoption</a>
+<a href="summary.php">Summary</a>
+<a href="payment.html">Payment</a>
+
+</div>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<section class="header">
+
+<div class="small-title">
+FIND YOUR COMPANION
+</div>
+
+<h1>Meet Your Match</h1>
+
+<p>
+Explore our pets and find the companion waiting for a loving home.
+</p>
+
+</section>
+
+
+<!-- FILTER -->
+
+<section class="filter-area">
+
+<div class="category">
+
+<button onclick="showPets('dog')">
+Dogs
+</button>
+
+<button onclick="showPets('cat')">
+Cats
+</button>
+
+<button onclick="showPets('other')">
+Other Pets
+</button>
+
+<button onclick="showPets('all')">
+All Pets
+</button>
+
+</div>
+
+
+<div class="search">
+
+<input
+type="text"
+id="search"
+placeholder="Search by name or breed..."
+onkeyup="searchPets()">
+
+</div>
+
+</section>
+
+
+<!-- PET COUNT -->
+
+<div class="count">
+
+<span id="petCount">18</span> pets available
+
+</div>
+
+
+<!-- PET AREA -->
+
+<section class="pet-area">
+
+<p id="message">
+Select a category to explore our pets.
+</p>
+
+<div class="pets" id="pets"></div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-content">
+
+<div>
+
+<h3>Happy Paws</h3>
+
+<p>
+Helping pets find loving forever homes.
+</p>
+
+</div>
+
+
+<div>
+
+<h3>Contact</h3>
+
+<p>happypaws@gmail.com</p>
+
+<p>+91 98765 43210</p>
+
+</div>
+
+
+<div>
+
+<h3>Quick Links</h3>
+
+<p>Available Pets</p>
+
+<p>Adoption Application</p>
+
+</div>
+
+</div>
+
+
+<div class="copyright">
+
+© 2026 Happy Paws Pet Adoption. All Rights Reserved.
+
+</div>
+
+</footer>
+
+
+<script>
+
+/* PET DATA */
+
+var petList = [
+
+[
+"Bruno",
+"Labrador",
+"dog",
+"https://images.unsplash.com/photo-1552053831-71594a27632d?w=600",
+"2 Years",
+"Male"
+],
+
+[
+"Max",
+"Beagle",
+"dog",
+"https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=600",
+"3 Years",
+"Male"
+],
+
+[
+"Rocky",
+"Golden Retriever",
+"dog",
+"https://images.unsplash.com/photo-1558788353-f76d92427f16?w=600",
+"2 Years",
+"Male"
+],
+
+[
+"Simba",
+"Indian Pariah",
+"dog",
+"https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600",
+"1 Year",
+"Male"
+],
+
+[
+"Milo",
+"Indie Mix",
+"dog",
+"https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600",
+"2 Years",
+"Male"
+],
+
+[
+"Daisy",
+"Cocker Spaniel",
+"dog",
+"https://images.unsplash.com/photo-1517849845537-4d257902454a?w=600",
+"3 Years",
+"Female"
+],
+
+[
+"Oscar",
+"German Shepherd",
+"dog",
+"https://images.unsplash.com/photo-1568572933382-74d440642117?w=600",
+"4 Years",
+"Male"
+],
+
+[
+"Ruby",
+"Pug",
+"dog",
+"https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=600",
+"2 Years",
+"Female"
+],
+
+
+[
+"Luna",
+"Persian Cat",
+"cat",
+"https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600",
+"1 Year",
+"Female"
+],
+
+[
+"Bella",
+"Siamese Cat",
+"cat",
+"https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=600",
+"2 Years",
+"Female"
+],
+
+[
+"Coco",
+"Indian Shorthair",
+"cat",
+"https://images.unsplash.com/photo-1574158622682-e40e69881006?w=600",
+"1 Year",
+"Female"
+],
+
+[
+"Mimi",
+"Himalayan Cat",
+"cat",
+"https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?w=600",
+"3 Years",
+"Female"
+],
+
+[
+"Leo",
+"Maine Coon",
+"cat",
+"https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=600",
+"2 Years",
+"Male"
+],
+
+[
+"Misty",
+"Tabby Cat",
+"cat",
+"https://images.unsplash.com/photo-1529778873920-4da4926a72c2?w=600",
+"1 Year",
+"Female"
+],
+
+
+[
+"Snowy",
+"Rabbit",
+"other",
+"https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=600",
+"1 Year",
+"Female"
+],
+
+[
+"Rio",
+"Parrot",
+"other",
+"https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=600",
+"2 Years",
+"Male"
+],
+
+[
+"Shelly",
+"Tortoise",
+"other",
+"https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=600",
+"4 Years",
+"Not specified"
+],
+
+[
+"Kiwi",
+"Lovebird",
+"other",
+"https://images.unsplash.com/photo-1544923408-75c5cef46f14?w=600",
+"1 Year",
+"Female"
+]
+
+];
+
+
+/* SHOW PETS BY CATEGORY */
+
+function showPets(category) {
+
+    var result = "";
+    var count = 0;
+
+    for (var i = 0; i < petList.length; i++) {
+
+        if (category == "all" || petList[i][2] == category) {
+
+            result += createCard(petList[i]);
+
+            count++;
+        }
+    }
+
+    document.getElementById("message").style.display = "none";
+
+    document.getElementById("pets").innerHTML = result;
+
+    document.getElementById("petCount").innerHTML = count;
+
+}
+
+
+/* CREATE PET CARD */
+
+function createCard(pet) {
+
+    return `
+
+    <div class="pet-card">
+
+        <div class="pet-image">
+
+            <img
+            src="${pet[3]}"
+            alt="${pet[0]}">
+
+        </div>
+
+
+        <div class="pet-info">
+
+            <h2>${pet[0]}</h2>
+
+            <div class="breed">
+                ${pet[1]}
+            </div>
+
+            <div class="info">
+
+                <b>Age:</b> ${pet[4]}<br>
+
+                <b>Gender:</b> ${pet[5]}
+
+            </div>
+
+
+            <a
+            class="details"
+            href="details.html?pet=${pet[0]}">
+
+            View Details
+
+            </a>
+
+        </div>
+
+    </div>
+
+    `;
+
+}
+
+
+/* SEARCH PETS */
+
+function searchPets() {
+
+    var text =
+    document.getElementById("search").value.toLowerCase();
+
+    var result = "";
+    var count = 0;
+
+
+    for (var i = 0; i < petList.length; i++) {
+
+        if (
+
+            petList[i][0].toLowerCase().includes(text)
+
+            ||
+
+            petList[i][1].toLowerCase().includes(text)
+
+        ) {
+
+            result += createCard(petList[i]);
+
+            count++;
+
+        }
+
+    }
+
+
+    document.getElementById("message").style.display = "none";
+
+    document.getElementById("pets").innerHTML = result;
+
+    document.getElementById("petCount").innerHTML = count;
+
+}
+
+</script>
+
+
+</body>
+</html>
