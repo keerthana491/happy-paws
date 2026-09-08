@@ -1,0 +1,577 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+
+<title>Happy Paws | Find Your Forever Friend</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f8f7f2;
+    color: #333;
+}
+
+/* NAVIGATION */
+
+nav {
+    background: white;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 12px #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: #27675d;
+}
+
+.logo span {
+    color: #e58b5b;
+}
+
+nav a {
+    text-decoration: none;
+    color: #444;
+    margin-left: 25px;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: #27675d;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 590px;
+    padding: 70px 8%;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    background: linear-gradient(120deg, #e7f2ee, #fff7ed);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-text {
+    width: 50%;
+}
+
+.badge {
+    display: inline-block;
+    background: white;
+    color: #27675d;
+    padding: 9px 18px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 3px 10px #ddd;
+}
+
+.hero h1 {
+    font-size: 55px;
+    line-height: 1.08;
+    color: #244f49;
+    margin: 22px 0;
+}
+
+.hero h1 span {
+    color: #df8050;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #555;
+    max-width: 540px;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background: #27675d;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: #174d45;
+    transform: translateY(-2px);
+}
+
+/* HERO IMAGE */
+
+.hero-image {
+    width: 50%;
+    position: relative;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 390px;
+    object-fit: cover;
+    border-radius: 30px;
+    box-shadow: 0 15px 35px #bbb;
+}
+
+/* FLOATING CARD */
+
+.floating-card {
+    position: absolute;
+    bottom: 25px;
+    left: -25px;
+    background: white;
+    padding: 18px 22px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px #bbb;
+}
+
+.floating-card b {
+    color: #27675d;
+}
+
+/* ABOUT */
+
+.about {
+    background: white;
+    padding: 75px 10%;
+    text-align: center;
+}
+
+.small-title {
+    color: #df8050;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.about h2,
+.section-title {
+    font-size: 35px;
+    color: #244f49;
+    margin: 12px;
+}
+
+.about p {
+    max-width: 760px;
+    margin: auto;
+    line-height: 1.8;
+    color: #666;
+}
+
+/* FEATURES */
+
+.features {
+    padding: 75px 8%;
+    text-align: center;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    width: 280px;
+    padding: 32px 25px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px #ddd;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 25px #ccc;
+}
+
+.card-icon {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #27675d;
+}
+
+.card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* STATS */
+
+.stats {
+    background: #27675d;
+    color: white;
+    padding: 50px 8%;
+    text-align: center;
+}
+
+.stat {
+    display: inline-block;
+    width: 210px;
+}
+
+.stat h2 {
+    font-size: 38px;
+    margin: 5px;
+}
+
+.stat p {
+    color: #dcece8;
+}
+
+/* CTA */
+
+.cta {
+    margin: 70px 8%;
+    padding: 55px 30px;
+    background: linear-gradient(120deg, #fff0e5, #e6f3ef);
+    border-radius: 25px;
+    text-align: center;
+}
+
+.cta h2 {
+    color: #244f49;
+    font-size: 34px;
+}
+
+.cta p {
+    color: #666;
+}
+
+/* FOOTER */
+
+footer {
+    background: #1d3834;
+    color: white;
+    padding: 40px 8%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+footer h3 {
+    color: #a9d8cf;
+}
+
+footer p {
+    color: #ddd;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #45615c;
+    color: #bbb;
+}
+
+/* MOBILE */
+
+@media(max-width: 800px) {
+
+nav {
+    flex-direction: column;
+    gap: 15px;
+}
+
+nav a {
+    margin: 5px;
+}
+
+.hero {
+    flex-direction: column;
+    text-align: center;
+}
+
+.hero-text,
+.hero-image {
+    width: 100%;
+}
+
+.hero h1 {
+    font-size: 40px;
+}
+
+.floating-card {
+    left: 10px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<div class="logo">
+Happy <span>Paws</span>
+</div>
+
+<div>
+
+<a href="index.html">Home</a>
+<a href="pets.html">Available Pets</a>
+<a href="details.html">Pet Details</a>
+<a href="adoption.html">Adoption</a>
+<a href="summary.php">Summary</a>
+<a href="payment.html">Payment</a>
+
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-text">
+
+<div class="badge">
+Trusted Pet Adoption Platform
+</div>
+
+<h1>
+Find Your <span>Forever Friend.</span>
+</h1>
+
+<p>
+Every pet deserves a loving home. Discover wonderful companions
+waiting for a family and give them the second chance they deserve.
+</p>
+
+<a href="pets.html" class="button">
+Explore Available Pets →
+</a>
+
+</div>
+
+
+<div class="hero-image">
+
+<img src="https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=900&q=80">
+
+<div class="floating-card">
+<b>Ready for a home</b><br>
+Loved, cared for & waiting for you.
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about">
+
+<div class="small-title">
+OUR MISSION
+</div>
+
+<h2>A Home Changes Everything</h2>
+
+<p>
+Happy Paws connects caring people with pets looking for permanent
+homes. Our goal is to make adoption simple, responsible and
+meaningful for both pets and families.
+</p>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="features">
+
+<div class="small-title">
+WHY ADOPT
+</div>
+
+<h2 class="section-title">
+More Than Just a Pet
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="card-icon">🏠</div>
+
+<h3>A Forever Home</h3>
+
+<p>
+Give a pet the security, love and comfort of a permanent family.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">♥</div>
+
+<h3>A Loving Companion</h3>
+
+<p>
+Build a meaningful bond with a companion who will be part of your life.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-icon">✦</div>
+
+<h3>Make a Difference</h3>
+
+<p>
+Your adoption creates an opportunity for another animal in need.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- STATISTICS -->
+
+<section class="stats">
+
+<div class="stat">
+
+<h2>100+</h2>
+
+<p>Pets Rescued</p>
+
+</div>
+
+<div class="stat">
+
+<h2>75+</h2>
+
+<p>Successful Adoptions</p>
+
+</div>
+
+<div class="stat">
+
+<h2>50+</h2>
+
+<p>Happy Families</p>
+
+</div>
+
+</section>
+
+
+<!-- CALL TO ACTION -->
+
+<section class="cta">
+
+<div class="small-title">
+YOUR NEW FRIEND IS WAITING
+</div>
+
+<h2>Ready to Find Your Perfect Match?</h2>
+
+<p>
+Take the first step towards giving a pet a loving forever home.
+</p>
+
+<a href="pets.html" class="button">
+Meet Our Pets →
+</a>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-content">
+
+<div>
+
+<h3>Happy Paws</h3>
+
+<p>
+Helping pets find loving forever homes.
+</p>
+
+</div>
+
+
+<div>
+
+<h3>Contact</h3>
+
+<p>happypaws@gmail.com</p>
+
+<p>+91 98765 43210</p>
+
+</div>
+
+
+<div>
+
+<h3>Quick Links</h3>
+
+<p>Available Pets</p>
+
+<p>Adoption Application</p>
+
+</div>
+
+</div>
+
+
+<div class="copyright">
+
+© 2026 Happy Paws Pet Adoption. All Rights Reserved.
+
+</div>
+
+</footer>
+
+</body>
+</html>
