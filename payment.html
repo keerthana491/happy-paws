@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Happy Paws | Payment</title>
+
+<style>
+
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #f8f7f2;
+    color: #333;
+}
+
+nav {
+    background: white;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px #ddd;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #27675d;
+}
+
+.logo span {
+    color: #df8050;
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #444;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 3px 15px #ddd;
+}
+
+h1 {
+    text-align: center;
+    color: #27675d;
+}
+
+.price {
+    background: #e7f2ee;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+    line-height: 1.8;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+select,
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 7px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button {
+    width: 100%;
+    padding: 13px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 7px;
+    background: #27675d;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #174d45;
+}
+
+#paymentDetails,
+#otpBox {
+    display: none;
+}
+
+.note {
+    font-size: 13px;
+    color: #777;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+Happy <span>Paws</span>
+</div>
+
+<div>
+<a href="index.html">Home</a>
+<a href="pets.html">Pets</a>
+</div>
+
+</nav>
+
+
+<div class="container">
+
+<div class="card">
+
+<h1>Complete Payment</h1>
+
+<p>
+<b>Selected Pet:</b>
+<span id="petName">Not selected</span>
+</p>
+
+
+<div class="price">
+
+<b>Adoption Fee:</b> ₹2,500<br>
+
+<b>Care & Processing:</b> ₹100<br>
+
+<b>Total:</b> ₹2,600
+
+</div>
+
+
+<form action="payment.php" method="POST"
+onsubmit="return validatePayment()">
+
+<input type="hidden" name="pet" id="pet">
+
+
+<label>Payment Method</label>
+
+<select name="method" id="method"
+onchange="showDetails()">
+
+<option value="">Select Payment Method</option>
+
+<option value="UPI">UPI</option>
+
+<option value="Google Pay">Google Pay</option>
+
+<option value="PhonePe">PhonePe</option>
+
+<option value="Paytm">Paytm</option>
+
+<option value="Debit Card">Debit Card</option>
+
+<option value="Credit Card">Credit Card</option>
+
+<option value="Net Banking">Net Banking</option>
+
+<option value="Cash on Visit">Cash on Visit</option>
+
+</select>
+
+
+<!-- PAYMENT DETAILS -->
+
+<div id="paymentDetails">
+
+<label>Payment Details</label>
+
+<div id="detailsFields"></div>
+
+</div>
+
+
+<!-- OTP -->
+
+<div id="otpBox">
+
+<label>Enter OTP</label>
+
+<input type="text"
+name="otp"
+id="otp"
+maxlength="6"
+placeholder="Enter 123456">
+
+<p class="note">
+Demo OTP: <b>123456</b>
+</p>
+
+</div>
+
+
+<button type="submit" id="payButton">
+Pay ₹2,600
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* Get selected pet */
+
+var pet = new URLSearchParams(window.location.search).get("pet");
+
+if (pet) {
+
+    document.getElementById("petName").innerText = pet;
+
+    document.getElementById("pet").value = pet;
+
+}
+
+
+/* Show payment details */
+
+function showDetails() {
+
+    var method = document.getElementById("method").value;
+
+    var details = document.getElementById("paymentDetails");
+
+    var fields = document.getElementById("detailsFields");
+
+    var otp = document.getElementById("otpBox");
+
+    var button = document.getElementById("payButton");
+
+
+    fields.innerHTML = "";
+
+
+    /* No payment for Cash on Visit */
+
+    if (method == "Cash on Visit") {
+
+        details.style.display = "none";
+
+        otp.style.display = "none";
+
+        button.innerText = "Confirm Adoption";
+
+    }
+
+
+    /* UPI methods */
+
+    else if (
+        method == "UPI" ||
+        method == "Google Pay" ||
+        method == "PhonePe" ||
+        method == "Paytm"
+    ) {
+
+        details.style.display = "block";
+
+        otp.style.display = "block";
+
+        button.innerText = "Pay ₹2,600";
+
+        fields.innerHTML = `
+        
+        <input type="text"
+        name="details"
+        placeholder="Enter UPI ID">
+        
+        `;
+
+    }
+
+
+    /* Card */
+
+    else if (
+        method == "Debit Card" ||
+        method == "Credit Card"
+    ) {
+
+        details.style.display = "block";
+
+        otp.style.display = "block";
+
+        button.innerText = "Pay ₹2,600";
+
+        fields.innerHTML = `
+        
+        <input type="text"
+        name="details"
+        maxlength="16"
+        placeholder="Card Number">
+
+        <input type="text"
+        name="expiry"
+        placeholder="MM/YY">
+
+        <input type="password"
+        name="cvv"
+        maxlength="3"
+        placeholder="CVV">
+        
+        `;
+
+    }
+
+
+    /* Net Banking */
+
+    else if (method == "Net Banking") {
+
+        details.style.display = "block";
+
+        otp.style.display = "block";
+
+        button.innerText = "Pay ₹2,600";
+
+        fields.innerHTML = `
+        
+        <input type="text"
+        name="details"
+        placeholder="Bank Name">
+
+        <input type="text"
+        name="account"
+        placeholder="Account Number">
+        
+        `;
+
+    }
+
+
+    else {
+
+        details.style.display = "none";
+
+        otp.style.display = "none";
+
+        button.innerText = "Pay ₹2,600";
+
+    }
+
+}
+
+
+/* Validation */
+
+function validatePayment() {
+
+    var method = document.getElementById("method").value;
+
+
+    if (method == "") {
+
+        alert("Please select a payment method.");
+
+        return false;
+
+    }
+
+
+    /* Cash on Visit */
+
+    if (method == "Cash on Visit") {
+
+        alert(
+            "Adoption confirmed! Please pay ₹2,600 when you visit."
+        );
+
+        return true;
+
+    }
+
+
+    /* Online payment */
+
+    var otp = document.getElementById("otp").value;
+
+
+    if (otp != "123456") {
+
+        alert("Invalid OTP. Please enter 123456.");
+
+        return false;
+
+    }
+
+
+    alert("Payment details verified successfully!");
+
+    return true;
+
+}
+
+</script>
+
+</body>
+
+</html>
+    
+        
